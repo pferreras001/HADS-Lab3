@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace WebSite
 {
@@ -22,11 +23,23 @@ namespace WebSite
                 Session["User"] = txtUsuario.Text;
                 if (DataAccess.DataAccess.getUserType(Session["User"].ToString()) == "Profesor")
                 {
-                    Response.Redirect("Profesor.aspx");
+                    if (Session["User"].ToString().Equals("vadillo@ehu.es"))
+                    {
+                        FormsAuthentication.SetAuthCookie("Vadillo", false);
+                        Session["usuario"] = "Vadillo";
+                    }
+                    else
+                    {
+                        FormsAuthentication.SetAuthCookie("Profesor", false);
+                        Session["usuario"] = "Profesor";
+                    }
+                    Response.Redirect("profesores/Profesor.aspx");
                 }
                 else
                 {
-                    Response.Redirect("Alumno.aspx");
+                    FormsAuthentication.SetAuthCookie("Alumno", false);
+                    Session["usuario"] = "Alumno";
+                    Response.Redirect("alumnos/Alumno.aspx");
                 }
             }
             else

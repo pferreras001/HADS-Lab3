@@ -19,10 +19,10 @@
         <asp:Menu ID="Menu1" runat="server" OnMenuItemClick="Menu1_MenuItemClick">
             <Items>
                 <asp:MenuItem Text="Asignaturas" Value="Asignaturas"></asp:MenuItem>
-                <asp:MenuItem Text="Tareas" Value="Tareas" NavigateUrl="~/TareasProfesor.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Tareas" Value="Tareas" NavigateUrl="~/profesores/TareasProfesor.aspx"></asp:MenuItem>
                 <asp:MenuItem Text="Grupos" Value="Grupos"></asp:MenuItem>
-                <asp:MenuItem Text="Importar v. XMLDocument" Value="Importar v. XMLDocument" NavigateUrl="~/ImportarTareas.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Exportar" Value="Exportar" NavigateUrl="~/ExportarTareas.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Importar v. XMLDocument" Value="Importar v. XMLDocument" NavigateUrl="~/vadillo/ImportarTareas.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Exportar" Value="Exportar" NavigateUrl="~/vadillo/ExportarTareas.aspx"></asp:MenuItem>
                 <asp:MenuItem Text="Importar v. DataSet" Value="Importar v. DataSet"></asp:MenuItem>
             </Items>
         </asp:Menu>

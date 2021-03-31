@@ -16,15 +16,15 @@ namespace WebSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Xml1.DocumentSource = Server.MapPath("App_Data/" + cboAsignaturas.SelectedValue + ".xml");
-            Xml1.TransformSource = Server.MapPath("App_Data/VerTablaTareas.xsl");
+            Xml1.DocumentSource = Server.MapPath("../App_Data/" + cboAsignaturas.SelectedValue + ".xml");
+            Xml1.TransformSource = Server.MapPath("../App_Data/VerTablaTareas.xsl");
 
         }
 
         protected void cboAsignaturas_TextChanged(object sender, EventArgs e)
         {
-            Xml1.DocumentSource = Server.MapPath("App_Data/" + cboAsignaturas.SelectedValue + ".xml");
-            Xml1.TransformSource = Server.MapPath("App_Data/VerTablaTareas.xsl");
+            Xml1.DocumentSource = Server.MapPath("../App_Data/" + cboAsignaturas.SelectedValue + ".xml");
+            Xml1.TransformSource = Server.MapPath("../App_Data/VerTablaTareas.xsl");
         }
 
         protected void cboAsignaturas_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace WebSite
         protected void btnImportar_Click(object sender, EventArgs e)
         {
             XmlDocument xmlTareas = new XmlDocument();
-            xmlTareas.Load(Server.MapPath("App_Data/" + cboAsignaturas.SelectedValue + ".xml"));
+            xmlTareas.Load(Server.MapPath("../App_Data/" + cboAsignaturas.SelectedValue + ".xml"));
 
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM TareasGenericas", DataAccess.DataAccess.connect());
             SqlCommandBuilder builder = new SqlCommandBuilder(adapter);

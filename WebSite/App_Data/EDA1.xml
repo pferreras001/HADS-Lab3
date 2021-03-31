@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="yes"?>
+<tareas>
+  <tareas codigo="AAAAA">
+    <descripcion>aaaaaa</descripcion>
+    <hestimadas>3</hestimadas>
+    <explotacion>false</explotacion>
+    <tipotarea>Ejercicio</tipotarea>
+  </tareas>
+  <tareas codigo="BBBB">
+    <descripcion>bbbbbb</descripcion>
+    <hestimadas>3</hestimadas>
+    <explotacion>false</explotacion>
+    <tipotarea>Ejercicio</tipotarea>
+  </tareas>
+  <tareas codigo="CCCCC">
+    <descripcion>cccccc</descripcion>
+    <hestimadas>10</hestimadas>
+    <explotacion>false</explotacion>
+    <tipotarea>Ejercicio</tipotarea>
+  </tareas>
+  <tareas codigo="EDA20-Ej1">
+    <descripcion>Ejercicio sobre listas ligadas</descripcion>
+    <hestimadas>3</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Ejercicio</tipotarea>
+  </tareas>
+  <tareas codigo="EDA20-Ex1">
+    <descripcion>examen</descripcion>
+    <hestimadas>12</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Examen</tipotarea>
+  </tareas>
+  <tareas codigo="EDA20-Ex2">
+    <descripcion>examen</descripcion>
+    <hestimadas>3</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Examen</tipotarea>
+  </tareas>
+</tareas>

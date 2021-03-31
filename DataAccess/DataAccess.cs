@@ -36,10 +36,11 @@ namespace DataAccess
             for (int i = 0; i < 7; i++)
                 s = String.Concat(s, random.Next(10).ToString());
             int numconfir = int.Parse(s);
+
             try
             {
                 SqlCommand comando = new SqlCommand();
-                String insert = "insert into Usuarios (email, nombre, apellidos, numconfir, confirmado, tipo, pass, codpass) values ('" + email + "','" + nombre + "','" + apellidos + "'," + numconfir + "," + 0 + ",'" + tipo + "','" + pass + "'," + pass + ")";
+                String insert = "insert into Usuarios (email, nombre, apellidos, numconfir, confirmado, tipo, pass, codpass) values ('" + email + "','" + nombre + "','" + apellidos + "'," + numconfir + "," + 0 + ",'" + tipo + "','" + MD5Encrypt.MD5Encrypt.encrypt(pass) + "'," + pass + ")";
                 comando = new SqlCommand(insert, connection);
 
                 try
@@ -120,7 +121,7 @@ namespace DataAccess
             comando = new SqlCommand(sql, connection);
 
             String password = (String)comando.ExecuteScalar();
-            if(pass == password.ToString())
+            if(MD5Encrypt.MD5Encrypt.encrypt(pass) == password.ToString())
             {
                 return 0;
             }
