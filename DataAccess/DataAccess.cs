@@ -37,6 +37,7 @@ namespace DataAccess
                 s = String.Concat(s, random.Next(10).ToString());
             int numconfir = int.Parse(s);
 
+
             try
             {
                 SqlCommand comando = new SqlCommand();

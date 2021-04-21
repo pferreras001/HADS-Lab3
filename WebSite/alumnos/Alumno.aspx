@@ -19,7 +19,54 @@
             </Items>
         </asp:Menu>
 
+            <br />
+
         </div>
+
+        <br />
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label1" runat="server" Text="USUARIOS LOGEADOS:"></asp:Label>
+                &nbsp;<asp:Label ID="lblLogeados" runat="server"></asp:Label>
+                <br />
+                <br />
+                Profesores:
+                <br />
+                <br />
+                <asp:ListView ID="lvProfesores" runat="server">
+                    <LayoutTemplate>
+                        <ul class="list-group">
+                            <li id="itemPlaceholder" runat="server" />
+                        </ul>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <li class="list-group-item"><%#: Eval("ListaEmail") %></li>
+                    </ItemTemplate>
+                </asp:ListView>
+                <br />
+                <br />
+                Alumnos:
+                <br />
+                <br />
+                <asp:ListView ID="lvAlumnos" runat="server">
+                    <LayoutTemplate>
+                        <ul class="list-group">
+                            <li id="itemPlaceholder" runat="server" />
+                        </ul>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <li class="list-group-item"><%#: Eval("ListaEmail") %></li>
+                    </ItemTemplate>
+                </asp:ListView>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <br />
+
+        <br />
+        <br />
+        <br />
     </form>
 </body>
 </html>

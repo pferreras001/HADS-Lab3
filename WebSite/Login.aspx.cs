@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using System.Collections;
 
 namespace WebSite
 {
@@ -33,12 +34,14 @@ namespace WebSite
                         FormsAuthentication.SetAuthCookie("Profesor", false);
                         Session["usuario"] = "Profesor";
                     }
+                    ((ArrayList)Application["ListaProfesores"]).Add(Session["User"].ToString());
                     Response.Redirect("profesores/Profesor.aspx");
                 }
                 else
                 {
                     FormsAuthentication.SetAuthCookie("Alumno", false);
                     Session["usuario"] = "Alumno";
+                    ((ArrayList)Application["ListaAlumnos"]).Add(Session["User"].ToString());
                     Response.Redirect("alumnos/Alumno.aspx");
                 }
             }

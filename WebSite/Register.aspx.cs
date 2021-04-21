@@ -21,13 +21,21 @@ namespace WebSite
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            int register = DataAccess.DataAccess.insertUser(txtCorreo.Text, txtNombre.Text, txtApellidos.Text, cboRol.SelectedValue, txtContrasena1.Text);
-            if (register != -1)
+            matricula.Matriculas matriculas = new matricula.Matriculas();
+            if (matriculas.comprobar(txtCorreo.Text).Equals("NO"))
             {
-                int numconfir = DataAccess.DataAccess.getUserCode(txtCorreo.Text);
-                String authUrl = "https://localhost:" + HttpContext.Current.Request.Url.Port + "/Confirm.aspx" + "?mbr=" + txtCorreo.Text + "&numconf=" + numconfir;
-                Mailing.Mailing.mailing(txtCorreo.Text, "Enlace para activar cuenta", authUrl);
-                lbl.Text = "Te hemos enviado un correo de confirmación a " + txtCorreo.Text;
+                lbl.Text = "Estudiante no matriculado";
+            }
+            else
+            {
+                int register = DataAccess.DataAccess.insertUser(txtCorreo.Text, txtNombre.Text, txtApellidos.Text, cboRol.SelectedValue, txtContrasena1.Text);
+                if (register != -1)
+                {
+                    int numconfir = DataAccess.DataAccess.getUserCode(txtCorreo.Text);
+                    String authUrl = "https://localhost:" + HttpContext.Current.Request.Url.Port + "/Confirm.aspx" + "?mbr=" + txtCorreo.Text + "&numconf=" + numconfir;
+                    Mailing.Mailing.mailing(txtCorreo.Text, "Enlace para activar cuenta", authUrl);
+                    lbl.Text = "Te hemos enviado un correo de confirmación a " + txtCorreo.Text;
+                }
             }
         }
     }

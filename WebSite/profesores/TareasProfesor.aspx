@@ -24,17 +24,24 @@
 
             </asp:SqlDataSource>
             <asp:SqlDataSource ID="ProfesorAsignatura" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-17ConnectionString %>" SelectCommand="SELECT gc.codigoasig FROM Asignaturas AS a INNER JOIN GruposClase AS gc ON a.codigo = gc.codigoasig INNER JOIN ProfesoresGrupo AS pg ON gc.codigo = pg.codigogrupo WHERE (pg.email = '&quot;Session['User']&quot;')"></asp:SqlDataSource>
+            
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" AutoGenerateEditButton="true" DataKeyNames="Codigo" DataSourceID="SqlDataSource3">
+                        <Columns>
+                            <asp:BoundField DataField="Codigo" HeaderText="Codigo" ReadOnly="True" SortExpression="Codigo" />
+                            <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
+                            <asp:CheckBoxField DataField="Explotacion" HeaderText="Explotacion" SortExpression="Explotacion" />
+                            <asp:BoundField DataField="TipoTarea" HeaderText="TipoTarea" SortExpression="TipoTarea" />
+                            <asp:BoundField DataField="HEstimadas" HeaderText="HEstimadas" SortExpression="HEstimadas" />
+                            <asp:BoundField DataField="CodAsig" HeaderText="CodAsig" SortExpression="CodAsig" />
+                        </Columns>
+                    </asp:GridView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
             <br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Codigo" DataSourceID="SqlDataSource3" AllowSorting="True" AutoGenerateEditButton="true">
-                <Columns>
-                    <asp:BoundField DataField="Codigo" HeaderText="Codigo" ReadOnly="True" SortExpression="Codigo" />
-                    <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" SortExpression="Descripcion" />
-                    <asp:CheckBoxField DataField="Explotacion" HeaderText="Explotacion" SortExpression="Explotacion" />
-                    <asp:BoundField DataField="TipoTarea" HeaderText="TipoTarea" SortExpression="TipoTarea" />
-                    <asp:BoundField DataField="HEstimadas" HeaderText="HEstimadas" SortExpression="HEstimadas" />
-                    <asp:BoundField DataField="CodAsig" HeaderText="CodAsig" SortExpression="CodAsig" />
-                </Columns>
-            </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:HADS21-17ConnectionString %>" SelectCommand="SELECT [Codigo], [Descripcion], [Explotacion], [TipoTarea], [HEstimadas], [CodAsig] FROM [TareasGenericas] WHERE ([CodAsig] = @CodAsig)"
                 UpdateCommand="UPDATE[TareasGenericas] SET Codigo=@Codigo,Descripcion=@Descripcion,Explotacion=@Explotacion,TipoTarea=@TipoTarea,HEstimadas=@HEstimadas,CodAsig=@CodAsig WHERE CodAsig=@CodAsig">
                 <SelectParameters>
